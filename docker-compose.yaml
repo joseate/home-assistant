@@ -53,7 +53,7 @@ services:
       - TZ=Europe/Madrid
     user: "${PUID}:${PGID}"
   hass-configurator:
-    image: "causticlab/hass-configurator-docker:arm"
+    image: "causticlab/hass-configurator-docker:latest"
     container_name: hass-configurator
     restart: unless-stopped
     ports:

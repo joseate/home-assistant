@@ -1,0 +1,9 @@
+- id: '1667394511617'
+  name: TimbreCasa
+  entities:
+    switch.shelly1_349454714459:
+      friendly_name: TimbreEntrada
+      icon: mdi:alarm-bell
+      state: 'off'
+  icon: mdi:door
+  metadata: {}

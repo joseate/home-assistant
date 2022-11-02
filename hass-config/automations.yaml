@@ -1,0 +1,15 @@
+- id: '1667394601959'
+  alias: Notify:Telegram:Timbre
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - switch.shelly1_349454714459
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.3trasnoshomeevents
+    data:
+      message: Llaman al timbre
+  mode: single

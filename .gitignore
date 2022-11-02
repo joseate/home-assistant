@@ -1,0 +1,17 @@
+.env
+/hass-config/secrets.yaml
+*.log
+*.log.*
+*log*
+/hass-config/*.log
+/hass-config/*.log.*
+/hass-config/*log*
+/hass-config/.storage
+node_modules/
+.npm/
+mosquitto/
+mariadb/
+hass-config/custom_components
+hass-config/blueprints
+*backup*
+nodered/.config*
