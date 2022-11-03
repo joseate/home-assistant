@@ -10,8 +10,11 @@ panel_iframe:
     icon: mdi:shuffle-variant
     url: http://192.168.1.245:1880/
     require_admin: true
-mqtt:
-  broker: 192.168.1.245
+  frigate:
+    title: Frigate
+    url: http://192.168.1.245:5000/
+    icon: mdi:cctv
+    require_admin: true
   
 recorder:
   db_url: !secret recorder_db_url
@@ -20,7 +23,8 @@ recorder:
 telegram_bot:
   - platform: polling
     api_key: !secret telegram_bot_api_key
-    allowed_chat_ids: !secret telegram_chat_id
+    allowed_chat_ids: 
+      - !secret telegram_chat_id
 
 notify:
   - platform: telegram
@@ -28,3 +32,25 @@ notify:
     chat_id: !secret telegram_chat_id
 
 automation: !include automations.yaml
+
+sensor:
+  - platform: aemet
+    name: "AEMET"
+    api_key: !secret aemet_api_key
+    station_id: "1484C"
+    monitored_conditions:
+      - temperature
+      - humidity
+      - pressure
+      - precipitation
+      - snow
+      - visibility
+      - wind_speed
+      - wind_max_speed
+      - wind_bearing
+
+weather:
+  - platform: aemet
+    name: "AEMET"
+    api_key: !secret aemet_api_key
+    station_id: "1484C"

@@ -1,0 +1,60 @@
+detectors:
+  cpu1:
+    type: cpu
+  cpu2:
+    type: cpu
+mqtt:
+  host: 192.168.1.245
+  topic_prefix: frigate
+cameras:
+  dormitorio:
+    ffmpeg:
+      input_args: -avoid_negative_ts make_zero -fflags nobuffer -flags low_delay -strict experimental -fflags +genpts+discardcorrupt -use_wallclock_as_timestamps 1
+      inputs:
+        - path: rtsp://tapo-dormitorio-cam:{FRIGATE_TAPO_DORMITORIO_CAM}@192.168.1.138:554/stream2
+          roles:
+            - detect
+            - rtmp
+            - record
+    detect:
+      width: 640
+      height: 360
+    objects:
+      track:
+        - person
+  arendel:
+    ffmpeg:
+      input_args: -avoid_negative_ts make_zero -fflags nobuffer -flags low_delay -strict experimental -fflags +genpts+discardcorrupt -use_wallclock_as_timestamps 1
+      inputs:
+        - path: rtsp://tapo-arendel-cam:{FRIGATE_TAPO_ARENDEL_CAM}@192.168.1.141:554/stream2
+          roles:
+            - detect
+            - rtmp
+            - record
+    detect:
+      width: 640
+      height: 360
+    objects:
+      track:
+        - person
+  salon:
+    ffmpeg:
+      input_args: -avoid_negative_ts make_zero -fflags nobuffer -flags low_delay -strict experimental -fflags +genpts+discardcorrupt -use_wallclock_as_timestamps 1
+      inputs:
+        - path: rtsp://tapo-salon-cam:{FRIGATE_TAPO_SALON_CAM}@192.168.1.157:554/stream2
+          roles:
+            - detect
+            - rtmp
+            - record
+    detect:
+      width: 640
+      height: 360
+    objects:
+      track:
+        - person
+record:
+  enabled: true
+  retain:
+    days: 2
+    mode: active_objects
+

@@ -64,3 +64,24 @@ services:
       - "./configurator-config:/config"
       - "./hass-config:/hass-config"
     user: "${PUID}:${PGID}"
+  frigate:
+    privileged: true
+    image: "blakeblackshear/frigate:${FRIGATE_VERSION:-stable-amd64}"
+    restart: unless-stopped
+    depends_on:
+      - homeassistant
+      - mosquitto
+    devices:
+      - /dev/dri:/dev/dri
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./frigate/frigate.yaml:/config/config.yml:ro
+      - ./frigate:/media/frigate
+    ports:
+      - 1935:1935
+      - 5000:5000
+    environment:
+      FRIGATE_TAPO_DORMITORIO_CAM: ${FRIGATE_TAPO_DORMITORIO_CAM}
+      FRIGATE_TAPO_ARENDEL_CAM: ${FRIGATE_TAPO_ARENDEL_CAM}
+      FRIGATE_TAPO_SALON_CAM: ${FRIGATE_TAPO_SALON_CAM}
+

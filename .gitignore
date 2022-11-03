@@ -15,3 +15,6 @@ hass-config/custom_components
 hass-config/blueprints
 *backup*
 nodered/.config*
+frigate/*.db*
+frigate/secrets.yaml
+frigate/recordings
