@@ -13,3 +13,22 @@
     data:
       message: Llaman al timbre
   mode: single
+- id: '1667568210492'
+  alias: TimbrePiso
+  description: ''
+  trigger:
+  - type: turned_on
+    platform: device
+    device_id: 20140f8a962694c8b19c74d7548c6943
+    entity_id: binary_sensor.shelly_shsw_1_349454714459_switch
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.3trasnoshomeevents
+    data:
+      message: Llaman a la puerta
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.shelly_shsw_1_349454714459
+  mode: single

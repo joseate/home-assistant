@@ -49,8 +49,9 @@ sensor:
       - wind_max_speed
       - wind_bearing
 
-weather:
-  - platform: aemet
-    name: "AEMET"
-    api_key: !secret aemet_api_key
-    station_id: "1484C"
+shelly:
+  discovery: true
+  version: true
+  sensors:
+    - all
+

@@ -56,86 +56,55 @@
         "enableGlobalContextStore": false
     },
     {
-        "id": "6a072f65e2e68859",
-        "type": "server-state-changed",
-        "z": "d2f188e1c0bbcfdf",
+        "id": "6fc27c524673be2b",
+        "type": "mqtt-broker",
         "name": "",
-        "server": "23ecc4e983fb876e",
-        "version": 4,
-        "exposeToHomeAssistant": false,
-        "haConfig": [
-            {
-                "property": "name",
-                "value": ""
-            },
-            {
-                "property": "icon",
-                "value": ""
-            }
-        ],
-        "entityidfilter": "switch.shelly1_349454714459",
-        "entityidfiltertype": "exact",
-        "outputinitially": false,
-        "state_type": "str",
-        "haltifstate": "true",
-        "halt_if_type": "bool",
-        "halt_if_compare": "is",
-        "outputs": 2,
-        "output_only_on_state_change": true,
-        "for": "0",
-        "forType": "num",
-        "forUnits": "minutes",
-        "ignorePrevStateNull": false,
-        "ignorePrevStateUnknown": false,
-        "ignorePrevStateUnavailable": false,
-        "ignoreCurrentStateUnknown": false,
-        "ignoreCurrentStateUnavailable": false,
-        "outputProperties": [
-            {
-                "property": "payload",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entityState"
-            },
-            {
-                "property": "data",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "eventData"
-            },
-            {
-                "property": "topic",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "triggerId"
-            }
-        ],
-        "x": 350,
-        "y": 240,
+        "broker": "172.18.0.4",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "4cd0ab1930472423",
+        "type": "mqtt in",
+        "z": "d2f188e1c0bbcfdf",
+        "name": "TimbreEntradaChange",
+        "topic": "shellies/shelly1-349454714459/input/0",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6fc27c524673be2b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 400,
+        "y": 260,
         "wires": [
             [
-                "e1936fa30a490fa0",
-                "7bf919d77d188492"
-            ],
-            []
+                "f471b835c782e529"
+            ]
         ]
     },
     {
-        "id": "e1936fa30a490fa0",
-        "type": "telegram sender",
-        "z": "d2f188e1c0bbcfdf",
-        "name": "Aviso",
-        "bot": "2adb9c0b14b65fef",
-        "haserroroutput": false,
-        "outputs": 1,
-        "x": 750,
-        "y": 300,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "7bf919d77d188492",
+        "id": "f471b835c782e529",
         "type": "debug",
         "z": "d2f188e1c0bbcfdf",
         "name": "debug 1",
@@ -146,8 +115,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 740,
-        "y": 220,
+        "x": 700,
+        "y": 260,
         "wires": []
     }
 ]
